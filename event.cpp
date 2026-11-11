@@ -41,9 +41,9 @@ std::string Event::to_string() const
 	}
 	
 	if (!end_time.empty()) {
-		output << end_time;
+		output << "-" << end_time;
 	} else {
-		output << "-----";
+		output << "------";
 	}
 
 	output << " " << calendar;
