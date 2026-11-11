@@ -2,23 +2,24 @@
 #include <iostream>
 #include "event.h"
 
-void write_to_file(Event&);
+void write_to_file(std::string&);
 
 int main()
 {
 	Event event;
-	std::cout << event.to_string() << std::endl;
-	write_to_file(event);
+	std::string event_string{event.to_string()};
+	std::cout << event_string << std::endl;
+	write_to_file(event_string);
         
 	return 0;
 }
 
-void write_to_file(Event& event)
+void write_to_file(std::string& event_string)
 {
 	std::ofstream f;
         f.open("mycal", std::ios::app);
 
-	f << event.to_string() << std::endl;
+	f << event_string << std::endl;
 
         f.close();
 }
