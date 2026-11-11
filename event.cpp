@@ -56,7 +56,7 @@ std::string Event::to_string() const
 	if (!location.empty())
 		output << " <" << location << ">";
 
-	if (!title.empty())
+	if (!description.empty())
 		output << " " << description;
 
 	return output.str();
