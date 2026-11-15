@@ -7,19 +7,20 @@ void write_to_file(std::string&);
 int main()
 {
 	Event event;
-	std::string event_string{event.to_string()};
-	std::cout << event_string << std::endl;
-	write_to_file(event_string);
+	std::string e{event.to_string()};
+
+	std::cout << e << std::endl;
+	write_to_file(e);
         
 	return 0;
 }
 
-void write_to_file(std::string& event_string)
+void write_to_file(std::string& e)
 {
 	std::ofstream f;
         f.open("mycal", std::ios::app);
 
-	f << event_string << std::endl;
+	f << e << std::endl;
 
         f.close();
 }
