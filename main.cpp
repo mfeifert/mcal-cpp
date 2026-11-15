@@ -17,9 +17,9 @@ int main()
 void write_to_file(Event& e)
 {
 	std::ofstream f;
-        f.open("mycal", std::ios::app);
+	f.open("mycal", std::ios::app);
 
 	f << e << std::endl;
 
-        f.close();
+	f.close();
 }
