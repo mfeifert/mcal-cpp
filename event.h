@@ -8,6 +8,7 @@ class Event
 public:
 	Event();
 	void prompt();
+	void format_fields();
 	std::string to_string() const;
 	friend std::ostream& operator<<(std::ostream&, const Event&);
 private:

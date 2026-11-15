@@ -7,6 +7,7 @@
 Event::Event()
 {
 	prompt();
+	format_fields();
 }
 
 void Event::prompt()
@@ -21,13 +22,17 @@ void Event::prompt()
 	getline(std::cin, calendar);
 	std::cout << "Tags: ";
 	getline(std::cin, tags);
-	std::replace(tags.begin(), tags.end(), ' ', ':');
 	std::cout << "Title: ";
 	getline(std::cin, title);
 	std::cout << "Location: ";
 	getline(std::cin, location);
 	std::cout << "Description: ";
 	getline(std::cin, description);
+}
+
+void Event::format_fields()
+{
+	std::replace(tags.begin(), tags.end(), ' ', ':');
 }
 
 std::string Event::to_string() const
