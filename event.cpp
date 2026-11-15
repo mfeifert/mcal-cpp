@@ -34,28 +34,22 @@ std::string Event::to_string() const
 
 	output << date;
 
-	if (!start_time.empty()) {
+	if (!start_time.empty())
 		output << " " << start_time;
-        } else {
+        else
 		output << " -----";
-	}
-	
-	if (!end_time.empty()) {
+	if (!end_time.empty())
 		output << "-" << end_time;
-	} else {
+	else
 		output << "------";
-	}
 
 	output << " " << calendar;
-
 	output << ":" << tags;
 
 	if (!title.empty())
 		output << " [" << title << "]";
-
 	if (!location.empty())
 		output << " <" << location << ">";
-
 	if (!description.empty())
 		output << " " << description;
 
