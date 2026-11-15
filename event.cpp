@@ -55,3 +55,9 @@ std::string Event::to_string() const
 
 	return output.str();
 }
+
+std::ostream& operator<<(std::ostream& os, const Event& e)
+{
+	os << e.to_string();
+	return os;
+}
