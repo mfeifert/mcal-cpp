@@ -32,6 +32,11 @@ void Event::prompt()
 
 void Event::format_fields()
 {
+	if (start_time.empty())
+		start_time = "-----";
+	if (end_time.empty())
+		end_time = "-----";
+
 	std::replace(tags.begin(), tags.end(), ' ', ':');
 }
 
@@ -40,16 +45,8 @@ std::string Event::to_string() const
 	std::ostringstream output;
 
 	output << date;
-
-	if (!start_time.empty())
-		output << " " << start_time;
-        else
-		output << " -----";
-	if (!end_time.empty())
-		output << "-" << end_time;
-	else
-		output << "------";
-
+	output << " " << start_time;
+	output << "-" << end_time;
 	output << " " << calendar << ":";
 	output << tags << ":";
 
