@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -20,6 +21,7 @@ void Event::prompt()
 	getline(std::cin, calendar);
 	std::cout << "Tags: ";
 	getline(std::cin, tags);
+	std::replace(tags.begin(), tags.end(), ' ', ':');
 	std::cout << "Title: ";
 	getline(std::cin, title);
 	std::cout << "Location: ";
@@ -43,8 +45,8 @@ std::string Event::to_string() const
 	else
 		output << "------";
 
-	output << " " << calendar;
-	output << ":" << tags;
+	output << " " << calendar << ":";
+	output << tags << ":";
 
 	if (!title.empty())
 		output << " [" << title << "]";

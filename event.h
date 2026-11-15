@@ -2,7 +2,6 @@
 #define EVENT_H
 
 #include <string>
-#include <vector>
 
 class Event
 {
@@ -18,7 +17,6 @@ private:
 	std::string start_time;
 	std::string end_time;
 	std::string calendar;
-	// std::vector<std::string> tags;
 	std::string tags;
 	std::string title;
 	std::string location;
