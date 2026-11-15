@@ -3,25 +3,29 @@ CPPFLAGS = -MP -MD
 CXXFLAGS = -Wall
 TARGET = bin
 SRCS = $(wildcard *.cpp)
-OBJS = $(SRCS:.cpp=.o)
-DEPS = $(SRCS:.cpp=.d)
+BUILD_DIR = build
+OBJS = $(SRCS:%.cpp=$(BUILD_DIR)/%.o)
+DEPS = $(SRCS:%.cpp=$(BUILD_DIR)/%.d)
 
-.PHONY: all build run clean
+.PHONY: all run clean
 
-all: build
+all: $(TARGET)
 
-build: $(TARGET)
+$(OBJS): | $(BUILD_DIR)
+
+$(BUILD_DIR):
+	mkdir -p $@
 
 $(TARGET): $(OBJS)
 	$(CXX) $^ -o $@
 
-%.o: %.cpp
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
+$(BUILD_DIR)/%.o: %.cpp
+	$(CXX) $(CPPFLAGS) -MF $(BUILD_DIR)/$*.d $(CXXFLAGS) -c $< -o $@
 
 run:
 	./$(TARGET)
 
 clean:
-	rm -f $(TARGET) $(OBJS) $(DEPS)
+	rm -rf $(BUILD_DIR) $(TARGET)
 
 -include $(DEPS)
