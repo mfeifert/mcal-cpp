@@ -10,7 +10,6 @@ public:
 	void prompt();
 	void format_fields();
 	std::string to_string() const;
-	friend std::ostream& operator<<(std::ostream&, const Event&);
 private:
 	// std::string start_date;
 	// std::string end_date;
